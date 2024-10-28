@@ -32,13 +32,14 @@ public class ThreadConnection extends Thread {
                         for (int i = 0; i < lista.size(); i++) {
                             out.writeBytes(i + ") " +  lista.get(i) + "\n");
                         }
-                        out.writeBytes("@" + "\n");
                         out.writeBytes("Si vuole eliminare un' elemento della lista?(s = si, altro = no)" + "\n");
+                        out.writeBytes("@" + "\n");
                         String scelta = in.readLine();
                         if (scelta.equals("s")) {
-                            out.writeBytes("scegliere il numero: 0-" + lista.size() + "\n");
+                            out.writeBytes("scegliere il numero: 0-" + (lista.size() - 1) + "\n");
                             scelta = in.readLine();
-                            lista.remove(scelta);
+                            int val = Integer.valueOf(scelta);
+                            lista.remove(val);
                             out.writeBytes("rimozione eseguita");
                         }
                         out.writeBytes("@" + "\n");
